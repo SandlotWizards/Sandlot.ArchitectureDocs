@@ -9,10 +9,9 @@
   <ItemGroup>
     <Folder Include="00-Governance\" />
     <Folder Include="10-Architecture\Deployment\" />
-    <Folder Include="40-Tooling\" />
     <Folder Include="50-DesignPatterns\" />
     <Folder Include="60-OperationalUnits\" />
-    <Folder Include="70-Playbooks\EntityGroup\Contexts\Consumers\" />
+    <Folder Include="70-Playbooks\" />
     <Folder Include="90-AiPrompts\" />
   </ItemGroup>
 
