@@ -13,6 +13,10 @@
     <Folder Include="50-DesignPatterns\" />
     <Folder Include="60-OperationalUnits\" />
     <Folder Include="70-Playbooks\EntityGroup\Contexts\Consumers\" />
+    <Folder Include="90-AiPrompts\" />
+    <Folder Include="900-ContinualImprovement\OpportunitiesForImprovement\10-Proposed\" />
+    <Folder Include="900-ContinualImprovement\OpportunitiesForImprovement\30-Inprocess\" />
+    <Folder Include="900-ContinualImprovement\OpportunitiesForImprovement\40-Completed\" />
   </ItemGroup>
 
 </Project>
