@@ -40,6 +40,16 @@ public interface IActionLoggerService
     string Message(string message, ConsoleColor color = ConsoleColor.Gray, bool throwException = false, Func<string, Exception>? exceptionFactory = null, bool logToLogger = false);
     void PrintHeader(ConsoleColor color = ConsoleColor.Gray);
     void PrintTrailer(ConsoleColor color = ConsoleColor.Gray);
+
+    // ValidationResult variants
+    ValidationResult TraceResult(string message, bool throwException = false, Func<string, Exception>? exceptionFactory = null, bool logToLogger = true);
+    ValidationResult DebugResult(string message, bool throwException = false, Func<string, Exception>? exceptionFactory = null, bool logToLogger = true);
+    ValidationResult InfoResult(string message, bool throwException = false, Func<string, Exception>? exceptionFactory = null, bool logToLogger = true);
+    ValidationResult WarningResult(string message, bool throwException = false, Func<string, Exception>? exceptionFactory = null, bool logToLogger = true);
+    ValidationResult ErrorResult(string message, bool throwException = false, Func<string, Exception>? exceptionFactory = null, bool logToLogger = true);
+    ValidationResult CriticalResult(string message, bool throwException = false, Func<string, Exception>? exceptionFactory = null, bool logToLogger = true);
+    ValidationResult SuccessResult(string message = "✔ Done", bool throwException = false, Func<string, Exception>? exceptionFactory = null, bool logToLogger = false);
+    ValidationResult MessageResult(string message, ConsoleColor color = ConsoleColor.Gray, bool throwException = false, Func<string, Exception>? exceptionFactory = null, bool logToLogger = false);
 }
 ```
 
@@ -57,6 +67,19 @@ public interface IActionLoggerService
 | Critical   | Severe issues                    | `🔥`            | Red            |
 | Success    | Completion notice                | `✔` (default)  | Green          |
 | Message    | Symbol-free messages             | (none)         | Configurable   |
+
+---
+
+## ✅ ValidationResult Integration
+
+Each logging method has a corresponding `ValidationResult`-returning variant. These methods allow error reporting while preserving control flow for downstream logic, such as:
+
+```csharp
+var result = _logger.WarningResult("Insufficient metadata");
+if (!result.IsValid) return result;
+```
+
+They return either `ValidationResult.Fail(...)` or `ValidationResult.Success()`, based on severity.
 
 ---
 
